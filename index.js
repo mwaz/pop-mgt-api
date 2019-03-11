@@ -1,5 +1,4 @@
 import dBConfig from './utils/dbConfig';
-import passport from 'passport';
 import path from 'path';
 import cors from 'cors';
 import mongoose from 'mongoose';
@@ -32,14 +31,11 @@ app.use(bodyParser.json());
 app.use(jsend.middleware);
 
 // routes(app);
-app.use('/sms-mgt/api', routes)
+app.use('/pop-mgt/api', routes)
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(passport.initialize());
-app.use(passport.session());
 
-require('./utils/auth/passport')(passport);
 app.get('/', (req, res) => {
   res.send('Invalid Endpoint');
 });

@@ -6,7 +6,7 @@
     "scripts": {
       "test": "npm test",
       "lint": "eslint app/",
-      "dev": "nodemon --exec babel-node ./index.js localhost 3004"
+      "dev": "nodemon --exec babel-node ./index.js localhost 3000"
     },
     "repository": {
       "type": "git",
