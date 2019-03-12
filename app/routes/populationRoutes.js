@@ -7,6 +7,7 @@ const router = new Router();
 
 router.post('/', catchErrors(populationController.addLocationPopulation));
 router.get('/', catchErrors(populationController.showLocationPopulation));
+router.get('/:locationId', catchErrors(populationController.showSingleLocationPopulation));
 router.put('/:locationId', catchErrors(populationController.updateLocationPopulation));
 router.delete('/:locationId', catchErrors(populationController.deleteLocation));
 
@@ -22,7 +23,7 @@ if (error.type === 'ValidationError') {
       field: 'location'
     })
   };
-  
+
   res.status(500).jsend.error({
     message: 'Something went wrong on the server.'
   });

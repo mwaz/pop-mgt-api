@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import routes from './app/routes';
 import  bodyParser from 'body-parser';
 import express from 'express';
-import jsend from 'jsend'
+import jsend from 'jsend';
 
 
 mongoose

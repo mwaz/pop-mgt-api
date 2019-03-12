@@ -16,6 +16,9 @@ const populationSchema = new mongoose.Schema({
         type: Number,
         required: false
     },
+    parentLocation: {
+        type: String,
+    }
 },
 {
   timestamps: true
