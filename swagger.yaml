@@ -1,0 +1,141 @@
+swagger: "2.0"
+info:
+    title: populations management API
+    description: An awesome app for handing populations of various locations
+    version: 1.0.0
+
+host: 127.0.0.1:3005
+basepath:
+schemes: 
+    - http
+
+consumes:
+    - application/json
+
+paths:
+  /pop-mgt/api/population:
+    get:
+      summary: get all populations from added locations
+      description: locations have populations of both males and females and can be nested
+      tags:
+        - Population
+      responses:
+        200:
+          description: Successfully retrived population of locations
+        500:
+          $ref: '#/components/errors/internalServerError'
+
+  /pop-mgt/api/population/{locationId}/:
+    put:
+      summary: Update the population details of a given location id
+      description: updating the location id updates both the current locations and the locations that are nested
+      tags:
+        - Population
+      parameters:
+        - in: path
+          name: locationId
+          description: Id of location to be updated
+          required: true
+        - in: body
+          name: location
+          description: location of the population
+          name: males
+          description: Number of males in the location
+          name: females
+          description: Number of females in the location
+          schema:
+            $ref: '#/components/schemas/EditLocation'
+      responses:
+        200:
+          description: Location details have been updated
+        500:
+          $ref: '#/components/errors/internalServerError'
+
+  /pop-mgt/api/population/:
+    post:
+      summary: Register a new location database
+      description: For any location to be viewed it must be registered to the database
+      tags:
+        - Population
+      parameters:
+        - in: body
+          name: card
+          description: String name that identifies the location
+          name: males
+          description: Number of males in a location
+          name: females
+          description: Number of females in a location
+          schema:
+            $ref: '#/components/schemas/LocationRegistration'
+      responses:
+        201:
+          description: Successfully added location
+        409:
+          description: Location has already been added, try again with a different location
+        422:
+          description: The location information is required
+
+  /pop-mgt/api/population/{locationId}//:
+    get:
+      summary: get the population details of a specific location id
+      description: getting the location details fetches the population data od the location
+      tags:
+        - Population
+      parameters:
+        - in: path
+          name: locationId
+          description: Id of location to be updated
+          required: true
+      responses:
+        200:
+          description: Location details 
+        500:
+          $ref: '#/components/errors/internalServerError'
+  
+          
+
+  /pop-mgt/api/population/{locationId}:
+    delete:
+      summary: Delete the population details of a given location id
+      description: deleting the location id updates both the current locations and the locations that are nested
+      tags:
+        - Population
+      parameters:
+        - in: path
+          name: locationId
+          description: Id of location to be deleted
+          required: true
+        
+      responses:
+        200:
+          description: Location details have been deleted
+        500:
+          $ref: '#/components/errors/internalServerError'
+
+       
+components:
+  schemas:
+    EditLocation:
+      type: object
+      properties: 
+        location:
+          type: string
+        males:
+          type: number
+        females:
+          type: number
+
+    LocationRegistration:
+      type: object
+      properties: 
+        location:
+          type: string
+        males:
+          type: number
+        females:
+          type: number
+
+    
+  errors:
+    internalServerError:
+      description: Something went wrong on the server
