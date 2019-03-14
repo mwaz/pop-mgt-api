@@ -18,7 +18,7 @@ servers:
           - 'http'
           - 'https'
         default: 'http'
-        
+
 basePath: /pop-mgt/api
 schemes: 
     - http
@@ -28,7 +28,7 @@ consumes:
     - application/json
 
 paths:
-  /pop-mgt/api/population:
+  /population:
     get:
       summary: get all populations from added locations
       description: locations have populations of both males and females and can be nested
@@ -40,7 +40,7 @@ paths:
         500:
           $ref: '#/components/errors/internalServerError'
 
-  /pop-mgt/api/population/{locationId}/:
+  /population/{locationId}/:
     put:
       summary: Update the population details of a given location id
       description: updating the location id updates both the current locations and the locations that are nested
@@ -66,7 +66,7 @@ paths:
         500:
           $ref: '#/components/errors/internalServerError'
 
-  /pop-mgt/api/population/:
+  /population/:
     post:
       summary: Register a new location database
       description: For any location to be viewed it must be registered to the database
@@ -90,7 +90,7 @@ paths:
         422:
           description: The location information is required
 
-  /pop-mgt/api/population/{locationId}//:
+  /population/{locationId}//:
     get:
       summary: get the population details of a specific location id
       description: getting the location details fetches the population data od the location
@@ -109,7 +109,7 @@ paths:
   
           
 
-  /pop-mgt/api/population/{locationId}:
+  /population/{locationId}:
     delete:
       summary: Delete the population details of a given location id
       description: deleting the location id updates both the current locations and the locations that are nested
