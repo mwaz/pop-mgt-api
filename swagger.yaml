@@ -4,8 +4,22 @@ info:
     description: An awesome app for handing populations of various locations
     version: 1.0.0
 
-host: 127.0.0.1:3005
-basepath:
+servers:
+  - url: {protocol}://127.0.0.1:{port}
+    description: Development server (uses test data)
+    variables:
+      port:
+        enum:
+          - '3002'
+          - '3003'
+        default: '3005'
+      protocol:
+        enum:
+          - 'http'
+          - 'https'
+        default: 'http'
+        
+basePath: /pop-mgt/api
 schemes: 
     - http
     - https
