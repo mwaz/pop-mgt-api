@@ -1,5 +1,5 @@
 {
-  "name": "sms-mgt-api",
+  "name": "population-mgt-api",
   "version": "1.0.0",
   "description": "A population management API that contains a list of locations and the total number of residents in each location broken down by gender.",
   "main": "index.js",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/mwaz/pop-mgt-api.git"
   },
   "keywords": [
-    "sms"
+    "population"
   ],
   "author": "Waweru Mwaura",
   "license": "MIT",

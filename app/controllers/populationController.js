@@ -26,7 +26,7 @@ export default class PopulationController extends Controller {
            females,
            parentLocation
         })
-       return res.status(200).jsend.success({ location: newLocation })
+       return res.status(201).jsend.success({ location: newLocation })
 
     }
     async showLocationPopulation(req, res) {
