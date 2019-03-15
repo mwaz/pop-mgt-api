@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/mwaz/pop-mgt-api/badge.svg?branch=master)](https://coveralls.io/github/mwaz/pop-mgt-api?branch=master)
+
 ## Population Management API
 
 A CRUD API app built on node, express, and mongodb.
