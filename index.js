@@ -8,8 +8,7 @@ import express from 'express';
 import jsend from 'jsend';
 import swaggerUi  from 'swagger-ui-express';
 import YAML from 'yamljs';
-
-const swaggerDocument = YAML.load('./swagger.yaml');
+// const swaggerDocument = YAML.load('./swagger.yaml');
 
 
 mongoose
@@ -27,10 +26,11 @@ mongoose
   mongoose.set('useCreateIndex', true);
 
 const app = express();
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.use(cors());
+
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 app.use(bodyParser.json());
 app.use(jsend.middleware);
 
@@ -49,4 +49,5 @@ const port = process.env.PORT || dBConfig.port || 3005;
 const server = app.listen(port, function() {
   console.log('app running on', server.address().port);
 });
-module.exports = server;
+
+module.exports = server
