@@ -8,7 +8,9 @@ import express from 'express';
 import jsend from 'jsend';
 import swaggerUi  from 'swagger-ui-express';
 import YAML from 'yamljs';
-// const swaggerDocument = YAML.load('./swagger.yaml');
+import cron from 'node-cron';
+import https from 'https';
+const swaggerDocument = YAML.load('./swagger.yaml')
 
 
 mongoose
@@ -28,14 +30,21 @@ mongoose
 const app = express();
 app.use(cors());
 
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 app.use(bodyParser.json());
 app.use(jsend.middleware);
 
-// routes(app);
 app.use('/pop-mgt/api', routes)
+
+let healthchecks = cron.schedule("*/2 * * * *", function() {
+  console.log("---------------------");
+  console.log("Running Cron Job For Healthchecks ");
+  https.get("https://hc-ping.com/7384a6ff-a5d0-4473-93cf-efbfc009bb2c");
+  console.log("---------------------");
+});
+healthchecks.start();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
