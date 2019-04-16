@@ -50,7 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', (req, res) => {
-  res.send('Invalid Endpoint');
+  res.redirect('/api-docs');
 });
 
 const port = process.env.PORT || dBConfig.port || 3005;
