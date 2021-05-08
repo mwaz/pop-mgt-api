@@ -40,7 +40,7 @@
     "jest": "^24.7.1",
     "jsend": "^1.0.2",
     "jsonwebtoken": "^8.5.0",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.21",
     "minimist": "^1.2.0",
     "mocha": "^5.2.0",
     "mocha-prepare": "^0.1.0",
